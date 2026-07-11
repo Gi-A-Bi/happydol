@@ -12,6 +12,7 @@
 
   /* 배경 */
   --color-cream: #faf3ea; /* 전역 배경 — 따뜻한 크림 */
+  --color-cream-deep: #f0e4d3; /* 배경보다 한 단계 진한 패널 */
   --color-surface: #fffcf6; /* 카드/표면 */
 
   /* 텍스트 */

@@ -1,21 +1,22 @@
 import Link from "next/link";
 import ProjectCard from "@/components/ProjectCard";
 import { getFeaturedProjects } from "@/lib/projects";
+import { HERO_SUBTITLE, HERO_TITLE } from "@/lib/site";
 
 export default function HomePage() {
   const featured = getFeaturedProjects().slice(0, 3);
 
   return (
     <div>
-      <section className="py-14 sm:py-24">
+      <section className="bg-cream-deep rounded-[2.5rem] px-6 py-14 sm:px-14 sm:py-20">
         <p className="bg-rose-soft text-rose-deep inline-block rounded-full px-3.5 py-1.5 text-xs font-medium tracking-wide">
           [placeholder] 태그라인
         </p>
         <h1 className="mt-6 text-4xl leading-[1.08] font-bold tracking-tight sm:text-6xl md:text-7xl">
-          [placeholder] 한 줄 소개
+          {HERO_TITLE}
         </h1>
         <p className="text-ink-soft mt-6 max-w-xl text-lg leading-relaxed">
-          [placeholder] 부가 소개 문장
+          {HERO_SUBTITLE}
         </p>
         <div className="mt-10 flex flex-wrap gap-3">
           <Link
@@ -26,14 +27,14 @@ export default function HomePage() {
           </Link>
           <Link
             href="/about"
-            className="border-line hover:border-rose hover:text-rose-deep rounded-full border px-6 py-3 text-sm font-medium transition-colors"
+            className="bg-surface hover:bg-rose-soft hover:text-rose-deep rounded-full px-6 py-3 text-sm font-medium transition-colors"
           >
             소개 보기
           </Link>
         </div>
       </section>
 
-      <section className="mt-12">
+      <section className="mt-14 sm:mt-16">
         <div className="flex items-baseline justify-between">
           <h2 className="text-ink-soft text-xs font-semibold tracking-[0.2em] uppercase">
             Featured

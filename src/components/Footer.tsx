@@ -10,7 +10,7 @@ export default function Footer() {
         </p>
         {/* TODO: 이메일 구독 폼 자리 (Buttondown/ConvertKit 연동 시 이곳에 추가) */}
         <p className="text-ink-soft mt-10 text-xs tracking-wide">
-          © 2026 [placeholder]
+          © 2026 {SITE_NAME}
         </p>
       </div>
     </footer>
