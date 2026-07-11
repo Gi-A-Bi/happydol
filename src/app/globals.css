@@ -1,0 +1,43 @@
+@import "tailwindcss";
+
+/*
+  디자인 토큰 자리 — 테마(다크/라이트)·포인트 컬러는 후속 세션에서 확정 (PROJECT.md 미정 항목).
+  확정 전까지는 Tailwind 기본 팔레트를 사용하고, 임의 hex 하드코딩은 하지 않는다.
+
+  @theme {
+    --color-accent: ...;
+  }
+*/
+
+/* MDX 본문 최소 스타일 — 디자인 세션에서 대체 예정 */
+.mdx-body h2 {
+  @apply mt-8 mb-3 text-xl font-semibold;
+}
+
+.mdx-body h3 {
+  @apply mt-6 mb-2 text-lg font-semibold;
+}
+
+.mdx-body p {
+  @apply mb-4 leading-relaxed;
+}
+
+.mdx-body ul {
+  @apply mb-4 list-disc pl-5;
+}
+
+.mdx-body ol {
+  @apply mb-4 list-decimal pl-5;
+}
+
+.mdx-body li {
+  @apply mb-1;
+}
+
+.mdx-body a {
+  @apply underline underline-offset-4;
+}
+
+.mdx-body code {
+  @apply rounded bg-zinc-100 px-1 py-0.5 text-sm;
+}
