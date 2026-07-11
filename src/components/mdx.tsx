@@ -42,9 +42,9 @@ export function Feature({
       <span className="text-2xl" aria-hidden>
         {icon}
       </span>
-      <h3 className="text-ink mt-3 font-bold">{title}</h3>
+      <h3 className="text-ink mt-3 text-lg font-bold">{title}</h3>
       {/* MDX가 자식을 <p>로 감싸므로 div 컨테이너 + 내부 p 여백 제거 */}
-      <div className="text-ink-soft mt-1 text-sm leading-relaxed [&>p]:mb-0 [&>p]:max-w-none">
+      <div className="text-ink-soft mt-1.5 leading-relaxed [&>p]:mb-0 [&>p]:max-w-none">
         {children}
       </div>
     </div>
