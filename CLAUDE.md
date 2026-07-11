@@ -2,7 +2,7 @@
 
 ## 프로젝트 개요
 - 내 웹 앱들을 소개하는 개인 브랜드 쇼케이스 사이트
-- Next.js (App Router) + Tailwind CSS + MDX, 배포는 Cloudflare Pages (정적 내보내기)
+- Next.js (App Router) + Tailwind CSS + MDX, 배포는 Cloudflare Workers 정적 자산 (정적 내보내기)
 - 상세 기획은 @PROJECT.md 참조 (구조·디자인 방향·프로젝트 목록)
 
 ## 비용 원칙 (현 단계)
@@ -51,11 +51,13 @@
 - Lighthouse 성능·접근성 90+ 유지가 목표. 이를 해치는 변경은 사전에 알릴 것
 
 ## 배포 / 분석
-- Cloudflare Pages: 빌드 커맨드 `npm run build`, 출력 디렉토리 `out` (대시보드에서 설정)
+- Cloudflare Workers 정적 자산: 설정은 `wrangler.jsonc` (name: happydol, 자산 디렉토리 `./out`,
+  404는 `not_found_handling: "404-page"`). 서버 코드 없는 순수 정적 구성 — 정적 자산 서빙은 무료
+- 빌드 커맨드 `npm run build` → 배포 `npx wrangler deploy`
 - 분석: Cloudflare Web Analytics (무료) — `src/app/layout.tsx`에 주석 처리된 비콘 스크립트
   자리 있음. 토큰 발급 후 주석 해제
 
 ## 하지 말 것
 - 결제·인증 로직 임의 추가 (아직 수익화 모델 미정 — CTA는 frontmatter로만 제어)
-- 배포 설정(wrangler.toml, Cloudflare Pages 설정 등) 무단 변경
+- 배포 설정(wrangler.jsonc, Cloudflare 대시보드 설정 등) 무단 변경
 - 콘텐츠 텍스트(내 소개, 프로젝트 설명) 임의 창작 — placeholder로 두고 표시할 것

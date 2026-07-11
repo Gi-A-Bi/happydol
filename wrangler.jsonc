@@ -1,0 +1,12 @@
+// Cloudflare Workers 정적 자산 배포 설정
+// 서버 코드(main 스크립트) 없는 순수 정적 자산 전용 구성 — 정적 자산 서빙은 무료 (운영 비용 ₩0 원칙)
+// 서버 기능이 필요해지면 "main" 필드로 Workers 스크립트를 추가하는 방식으로 확장 (유료 전환은 그때 검토)
+{
+  "name": "happydol",
+  "compatibility_date": "2026-07-11",
+  "assets": {
+    "directory": "./out",
+    // 존재하지 않는 경로는 out/404.html을 404 응답으로 서빙
+    "not_found_handling": "404-page"
+  }
+}

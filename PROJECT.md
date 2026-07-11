@@ -17,8 +17,8 @@
 - 프로젝트 데이터: `content/projects/*.mdx` 파일 기반
   - frontmatter: `title`, `description`, `thumbnail`, `liveUrl`, `repoUrl`(선택), `ctaText`(선택, 기본 "사용해보기"), `status`(live | beta | archived), `tags`, `date`, `featured`(boolean)
   - 파일 추가만으로 목록/상세 페이지 자동 생성
-- 배포: Cloudflare Pages — 정적 내보내기(`output: 'export'`), 빌드 커맨드 `npm run build`, 출력 디렉토리 `out`
-  - 주소: 일단 `*.pages.dev` 서브도메인, 커스텀 도메인은 수익화 후 검토
+- 배포: Cloudflare Workers 정적 자산 — 정적 내보내기(`output: 'export'`), 설정은 `wrangler.jsonc`(자산 디렉토리 `./out`), 빌드 커맨드 `npm run build`
+  - 주소: 일단 `*.workers.dev` 서브도메인, 커스텀 도메인은 수익화 후 검토
 - SEO: 페이지별 메타태그, OG 이미지(현 단계: 썸네일 재사용 — 자동 생성이 필요해지면 satori 빌드 스크립트로), sitemap.xml, robots.txt
 - 분석: Cloudflare Web Analytics (무료)
 - 반응형 필수, Lighthouse 성능/접근성 90+ 목표
