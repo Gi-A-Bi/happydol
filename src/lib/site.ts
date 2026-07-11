@@ -1,6 +1,6 @@
 // 사이트 전역 메타 정보·문구 — 도메인/문구 확정 시 이 파일만 교체
 export const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://example.com";
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://happydol.healthydol.workers.dev";
 export const SITE_NAME = "happydol";
 export const SITE_DESCRIPTION =
   "현직 교사가 직접 만들고, 직접 교실에서 쓰는 웹 앱 모음입니다";
