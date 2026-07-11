@@ -62,9 +62,9 @@ export default async function ProjectDetailPage({ params }: Props) {
         <Image
           src={project.thumbnail}
           alt={`${project.title} 썸네일`}
-          width={1280}
-          height={720}
-          className="mt-8 aspect-video w-full rounded-3xl object-cover"
+          width={1200}
+          height={900}
+          className="mt-8 aspect-[4/3] w-full rounded-3xl object-cover"
         />
       </header>
 

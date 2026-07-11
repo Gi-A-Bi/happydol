@@ -13,9 +13,9 @@ export default function ProjectCard({ project }: { project: Project }) {
         <Image
           src={project.thumbnail}
           alt={`${project.title} 썸네일`}
-          width={640}
-          height={360}
-          className="aspect-video w-full object-cover"
+          width={800}
+          height={600}
+          className="aspect-[4/3] w-full object-cover"
         />
         <div className="absolute right-3 bottom-3 left-3 flex flex-wrap items-center gap-1.5">
           <h2 className="bg-surface/95 text-ink max-w-full truncate rounded-full px-3.5 py-1.5 text-sm font-semibold">
