@@ -37,29 +37,38 @@
   @apply outline-cocoa outline-2 outline-offset-2;
 }
 
-/* MDX 본문 최소 스타일 */
-.mdx-body h2 {
-  @apply mt-8 mb-3 text-xl font-semibold;
+/* MDX 본문 — 본문은 연한 회갈색, 강조·제목은 진한 ink로 대비 */
+.mdx-body {
+  @apply text-ink-soft;
 }
 
-.mdx-body h3 {
-  @apply mt-6 mb-2 text-lg font-semibold;
+/* :not([class]) — 마크다운 생성 요소에만 적용, 커스텀 컴포넌트(SectionTitle 등)는 제외 */
+.mdx-body h2:not([class]) {
+  @apply text-ink mt-8 mb-3 text-xl font-semibold;
+}
+
+.mdx-body h3:not([class]) {
+  @apply text-ink mt-6 mb-2 text-lg font-semibold;
 }
 
 .mdx-body p {
-  @apply mb-4 leading-relaxed;
+  @apply mb-5 max-w-prose leading-relaxed;
 }
 
 .mdx-body ul {
-  @apply mb-4 list-disc pl-5;
+  @apply mb-5 max-w-prose list-disc pl-5;
 }
 
 .mdx-body ol {
-  @apply mb-4 list-decimal pl-5;
+  @apply mb-5 max-w-prose list-decimal pl-5;
 }
 
 .mdx-body li {
-  @apply mb-1;
+  @apply mb-1.5;
+}
+
+.mdx-body strong {
+  @apply text-ink;
 }
 
 .mdx-body a {

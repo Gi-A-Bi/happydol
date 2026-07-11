@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
+import { mdxComponents } from "@/components/mdx";
 import StatusBadge from "@/components/StatusBadge";
 import { getAllProjects, getProjectBySlug } from "@/lib/projects";
 
@@ -40,58 +41,57 @@ export default async function ProjectDetailPage({ params }: Props) {
   return (
     <article>
       <header>
-        <div className="flex flex-wrap items-center gap-2.5">
-          <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
-            {project.title}
-          </h1>
-          <StatusBadge status={project.status} />
-        </div>
-        <p className="text-ink-soft mt-3 max-w-2xl text-lg">
-          {project.description}
-        </p>
-        <ul className="mt-4 flex flex-wrap gap-1.5">
+        <ul className="flex flex-wrap items-center gap-1.5">
+          <li>
+            <StatusBadge status={project.status} />
+          </li>
           {project.tags.map((tag) => (
             <li
               key={tag}
-              className="bg-rose-soft text-rose-deep rounded-full px-2.5 py-0.5 text-xs"
+              className="bg-rose-soft text-rose-deep rounded-full px-2.5 py-1 text-xs font-medium"
             >
               {tag}
             </li>
           ))}
         </ul>
+        <h1 className="mt-5 text-4xl font-extrabold tracking-tighter sm:text-6xl">
+          {project.title}
+        </h1>
+        <p className="text-ink-soft mt-4 max-w-2xl text-lg leading-relaxed sm:text-xl">
+          {project.description}
+        </p>
+        <div className="mt-8 flex flex-wrap items-center gap-3">
+          <a
+            href={project.liveUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-cocoa text-cream hover:bg-cocoa-deep rounded-full px-8 py-4 text-base font-semibold transition-colors"
+          >
+            {project.ctaText}
+          </a>
+          {project.repoUrl && (
+            <a
+              href={project.repoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="border-line hover:border-rose hover:text-rose-deep rounded-full border px-5 py-2.5 text-sm font-medium transition-colors"
+            >
+              GitHub
+            </a>
+          )}
+        </div>
         <Image
           src={project.thumbnail}
           alt={`${project.title} 썸네일`}
           width={1200}
           height={900}
-          className="mt-8 aspect-[4/3] w-full rounded-3xl object-cover"
+          priority
+          className="mt-12 aspect-[4/3] w-full rounded-3xl object-cover"
         />
       </header>
 
-      <div className="mdx-body mt-10 max-w-2xl">
-        <MDXRemote source={project.content} />
-      </div>
-
-      {/* CTA — 링크는 frontmatter(liveUrl/repoUrl)로만 제어 */}
-      <div className="mt-10 flex flex-wrap gap-3">
-        <a
-          href={project.liveUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="bg-cocoa text-cream hover:bg-cocoa-deep rounded-full px-6 py-3 text-sm font-medium transition-colors"
-        >
-          {project.ctaText}
-        </a>
-        {project.repoUrl && (
-          <a
-            href={project.repoUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="border-line hover:border-rose hover:text-rose-deep rounded-full border px-6 py-3 text-sm font-medium transition-colors"
-          >
-            GitHub
-          </a>
-        )}
+      <div className="mdx-body mt-12 max-w-3xl">
+        <MDXRemote source={project.content} components={mdxComponents} />
       </div>
     </article>
   );
