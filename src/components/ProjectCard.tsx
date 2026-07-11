@@ -18,7 +18,7 @@ export default function ProjectCard({ project }: { project: Project }) {
           className="aspect-video w-full object-cover"
         />
         <div className="absolute right-3 bottom-3 left-3 flex flex-wrap items-center gap-1.5">
-          <h2 className="bg-surface/95 text-ink rounded-full px-3.5 py-1.5 text-sm font-semibold">
+          <h2 className="bg-surface/95 text-ink max-w-full truncate rounded-full px-3.5 py-1.5 text-sm font-semibold">
             {project.title}
           </h2>
           <StatusBadge status={project.status} />

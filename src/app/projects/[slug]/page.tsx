@@ -46,7 +46,9 @@ export default async function ProjectDetailPage({ params }: Props) {
           </h1>
           <StatusBadge status={project.status} />
         </div>
-        <p className="text-ink-soft mt-3 text-lg">{project.description}</p>
+        <p className="text-ink-soft mt-3 max-w-2xl text-lg">
+          {project.description}
+        </p>
         <ul className="mt-4 flex flex-wrap gap-1.5">
           {project.tags.map((tag) => (
             <li
@@ -66,7 +68,7 @@ export default async function ProjectDetailPage({ params }: Props) {
         />
       </header>
 
-      <div className="mdx-body mt-8">
+      <div className="mdx-body mt-10 max-w-2xl">
         <MDXRemote source={project.content} />
       </div>
 

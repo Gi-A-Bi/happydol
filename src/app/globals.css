@@ -16,7 +16,7 @@
 
   /* 텍스트 */
   --color-ink: #3e2f23; /* 본문 — 진한 웜 브라운 */
-  --color-ink-soft: #8b7663; /* 보조 텍스트 */
+  --color-ink-soft: #786450; /* 보조 텍스트 (크림 배경 대비 5.1:1 — WCAG AA) */
 
   /* 주 포인트 — 딥 브라운 (버튼, 강조) */
   --color-cocoa: #5c4633;
@@ -25,10 +25,15 @@
   /* 보조 포인트 — 로즈핑크 (태그·뱃지·hover, 소량만) */
   --color-rose: #e8a0a8;
   --color-rose-soft: #f8e6e8; /* 뱃지/태그 배경 */
-  --color-rose-deep: #a4525d; /* 로즈 배경 위 텍스트 */
+  --color-rose-deep: #9a4a55; /* 로즈 배경 위 텍스트 (rose-soft 대비 5.0:1 — WCAG AA) */
 
   /* 경계선 */
   --color-line: #ecdfcf;
+}
+
+/* 키보드 포커스 링 — 모든 인터랙티브 요소 공통 */
+:where(a, button):focus-visible {
+  @apply outline-cocoa outline-2 outline-offset-2;
 }
 
 /* MDX 본문 최소 스타일 */

@@ -15,8 +15,8 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <div>
-      <h1 className="text-3xl font-bold tracking-tight">About</h1>
-      <div className="mt-6 space-y-4 leading-relaxed">
+      <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">About</h1>
+      <div className="mt-6 max-w-2xl space-y-4 leading-relaxed">
         <p>[placeholder] 자기 소개</p>
         <p>[placeholder] 하는 일 / 만드는 것</p>
       </div>

@@ -9,8 +9,8 @@ const NAV_ITEMS = [
 export default function Header() {
   return (
     <header className="border-line border-b">
-      <div className="mx-auto flex w-full max-w-3xl items-center justify-between px-4 py-4 sm:px-6">
-        <Link href="/" className="font-semibold">
+      <div className="mx-auto flex w-full max-w-5xl items-center justify-between px-4 py-5 sm:px-6">
+        <Link href="/" className="font-semibold tracking-tight">
           {SITE_NAME}
         </Link>
         <nav className="text-ink-soft flex gap-5 text-sm">
