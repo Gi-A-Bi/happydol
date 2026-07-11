@@ -1,4 +1,4 @@
-import { SITE_NAME } from "@/lib/site";
+import { OPERATOR_NAME, SITE_NAME } from "@/lib/site";
 
 export default function Footer() {
   return (
@@ -10,7 +10,7 @@ export default function Footer() {
         </p>
         {/* TODO: 이메일 구독 폼 자리 (Buttondown/ConvertKit 연동 시 이곳에 추가) */}
         <p className="text-ink-soft mt-10 text-xs tracking-wide">
-          © 2026 {SITE_NAME}
+          © 2026 {OPERATOR_NAME}
         </p>
       </div>
     </footer>

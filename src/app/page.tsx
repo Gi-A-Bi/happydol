@@ -1,7 +1,7 @@
 import Link from "next/link";
 import ProjectCard from "@/components/ProjectCard";
 import { getFeaturedProjects } from "@/lib/projects";
-import { HERO_SUBTITLE, HERO_TITLE } from "@/lib/site";
+import { HERO_SUBTITLE, HERO_TAGLINE, HERO_TITLE } from "@/lib/site";
 
 export default function HomePage() {
   const featured = getFeaturedProjects().slice(0, 3);
@@ -10,7 +10,7 @@ export default function HomePage() {
     <div>
       <section className="bg-cream-deep rounded-[2.5rem] px-6 py-14 sm:px-14 sm:py-20">
         <p className="bg-rose-soft text-rose-deep inline-block rounded-full px-3.5 py-1.5 text-xs font-medium tracking-wide">
-          [placeholder] 태그라인
+          {HERO_TAGLINE}
         </p>
         <h1 className="mt-6 text-4xl leading-[1.08] font-bold tracking-tight sm:text-6xl md:text-7xl">
           {HERO_TITLE}
