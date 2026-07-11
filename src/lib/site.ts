@@ -3,8 +3,10 @@ export const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://example.com";
 export const SITE_NAME = "happydol";
 export const SITE_DESCRIPTION =
-  "직접 만들어 직접 쓰는 웹 앱들을 이곳에 모아둡니다";
+  "현직 교사가 직접 만들고, 직접 교실에서 쓰는 웹 앱 모음입니다";
+export const CONTACT_EMAIL = "healthydol@gmail.com";
 
-// 홈 히어로 문구 (임시 실문구 — 추후 다듬을 예정)
-export const HERO_TITLE = "쓸수록 편해지는 도구들을 만듭니다";
-export const HERO_SUBTITLE = "직접 만들어 직접 쓰는 웹 앱들을 이곳에 모아둡니다";
+// 홈 히어로 문구 (초안 — 추후 다듬을 예정)
+export const HERO_TITLE = "교실을 편하게 만드는 도구들";
+export const HERO_SUBTITLE =
+  "현직 교사가 직접 만들고, 직접 교실에서 쓰는 웹 앱 모음입니다";
