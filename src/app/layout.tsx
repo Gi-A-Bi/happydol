@@ -1,8 +1,17 @@
 import type { Metadata } from "next";
+import localFont from "next/font/local";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site";
+
+// 셀프호스팅 가변 폰트 (SIL OFL) — 외부 CDN 의존 없음
+const pretendard = localFont({
+  src: "../fonts/PretendardVariable.woff2",
+  display: "swap",
+  weight: "45 920",
+  variable: "--font-pretendard",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -25,8 +34,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="ko">
-      <body className="flex min-h-screen flex-col bg-white text-zinc-900 antialiased">
+    <html lang="ko" className={pretendard.variable}>
+      <body className="bg-cream text-ink flex min-h-screen flex-col font-sans antialiased">
         <Header />
         <main className="mx-auto w-full max-w-3xl flex-1 px-4 py-10 sm:px-6">
           {children}

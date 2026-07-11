@@ -19,9 +19,9 @@ export default function ProjectsPage() {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold">Projects</h1>
-      <p className="mt-2 text-sm text-zinc-600">{DESCRIPTION}</p>
-      <div className="mt-8 grid gap-4 sm:grid-cols-2">
+      <h1 className="text-3xl font-bold tracking-tight">Projects</h1>
+      <p className="text-ink-soft mt-2 text-sm">{DESCRIPTION}</p>
+      <div className="mt-8 grid gap-6 sm:grid-cols-2">
         {projects.map((project) => (
           <ProjectCard key={project.slug} project={project} />
         ))}

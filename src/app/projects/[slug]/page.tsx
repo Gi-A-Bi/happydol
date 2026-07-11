@@ -40,16 +40,18 @@ export default async function ProjectDetailPage({ params }: Props) {
   return (
     <article>
       <header>
-        <div className="flex flex-wrap items-center gap-2">
-          <h1 className="text-2xl font-bold">{project.title}</h1>
+        <div className="flex flex-wrap items-center gap-2.5">
+          <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
+            {project.title}
+          </h1>
           <StatusBadge status={project.status} />
         </div>
-        <p className="mt-2 text-zinc-600">{project.description}</p>
-        <ul className="mt-3 flex flex-wrap gap-1.5">
+        <p className="text-ink-soft mt-3 text-lg">{project.description}</p>
+        <ul className="mt-4 flex flex-wrap gap-1.5">
           {project.tags.map((tag) => (
             <li
               key={tag}
-              className="rounded bg-zinc-100 px-1.5 py-0.5 text-xs text-zinc-600"
+              className="bg-rose-soft text-rose-deep rounded-full px-2.5 py-0.5 text-xs"
             >
               {tag}
             </li>
@@ -60,7 +62,7 @@ export default async function ProjectDetailPage({ params }: Props) {
           alt={`${project.title} 썸네일`}
           width={1280}
           height={720}
-          className="mt-6 aspect-video w-full rounded-lg object-cover"
+          className="mt-8 aspect-video w-full rounded-3xl object-cover"
         />
       </header>
 
@@ -74,7 +76,7 @@ export default async function ProjectDetailPage({ params }: Props) {
           href={project.liveUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="rounded-md bg-zinc-900 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-zinc-700"
+          className="bg-cocoa text-cream hover:bg-cocoa-deep rounded-full px-6 py-3 text-sm font-medium transition-colors"
         >
           {project.ctaText}
         </a>
@@ -83,7 +85,7 @@ export default async function ProjectDetailPage({ params }: Props) {
             href={project.repoUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-md border border-zinc-300 px-4 py-2 text-sm font-medium transition-colors hover:border-zinc-500"
+            className="border-line hover:border-rose hover:text-rose-deep rounded-full border px-6 py-3 text-sm font-medium transition-colors"
           >
             GitHub
           </a>

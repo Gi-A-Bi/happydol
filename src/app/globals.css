@@ -1,15 +1,37 @@
 @import "tailwindcss";
 
 /*
-  디자인 토큰 자리 — 테마(다크/라이트)·포인트 컬러는 후속 세션에서 확정 (PROJECT.md 미정 항목).
-  확정 전까지는 Tailwind 기본 팔레트를 사용하고, 임의 hex 하드코딩은 하지 않는다.
-
-  @theme {
-    --color-accent: ...;
-  }
+  디자인 토큰 — "따뜻한 프리미엄" (라이트 단일 테마)
+  색상은 반드시 아래 토큰의 유틸리티(bg-cream, text-ink 등)로만 사용할 것.
+  컴포넌트에 임의 hex 하드코딩 금지.
 */
+@theme {
+  --font-sans:
+    var(--font-pretendard), ui-sans-serif, system-ui, -apple-system,
+    "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
 
-/* MDX 본문 최소 스타일 — 디자인 세션에서 대체 예정 */
+  /* 배경 */
+  --color-cream: #faf3ea; /* 전역 배경 — 따뜻한 크림 */
+  --color-surface: #fffcf6; /* 카드/표면 */
+
+  /* 텍스트 */
+  --color-ink: #3e2f23; /* 본문 — 진한 웜 브라운 */
+  --color-ink-soft: #8b7663; /* 보조 텍스트 */
+
+  /* 주 포인트 — 딥 브라운 (버튼, 강조) */
+  --color-cocoa: #5c4633;
+  --color-cocoa-deep: #463528; /* hover */
+
+  /* 보조 포인트 — 로즈핑크 (태그·뱃지·hover, 소량만) */
+  --color-rose: #e8a0a8;
+  --color-rose-soft: #f8e6e8; /* 뱃지/태그 배경 */
+  --color-rose-deep: #a4525d; /* 로즈 배경 위 텍스트 */
+
+  /* 경계선 */
+  --color-line: #ecdfcf;
+}
+
+/* MDX 본문 최소 스타일 */
 .mdx-body h2 {
   @apply mt-8 mb-3 text-xl font-semibold;
 }
@@ -39,5 +61,5 @@
 }
 
 .mdx-body code {
-  @apply rounded bg-zinc-100 px-1 py-0.5 text-sm;
+  @apply bg-surface rounded px-1 py-0.5 text-sm;
 }
