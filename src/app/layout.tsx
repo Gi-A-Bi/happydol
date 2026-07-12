@@ -37,7 +37,7 @@ export default function RootLayout({
     <html lang="ko" className={pretendard.variable}>
       <body className="bg-cream text-ink flex min-h-screen flex-col font-sans antialiased">
         <Header />
-        <main className="mx-auto w-full max-w-5xl flex-1 px-4 py-10 sm:px-6">
+        <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-10 sm:px-6">
           {children}
         </main>
         <Footer />
