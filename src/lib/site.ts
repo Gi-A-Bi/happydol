@@ -1,14 +1,16 @@
-// 사이트 전역 메타 정보·문구 — 도메인/문구 확정 시 이 파일만 교체
+import copy from "../../content/site.json";
+
+// 사이트 주소 — 배포 설정 성격이라 코드에 유지
 export const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://happydol.healthydol.workers.dev";
-export const SITE_NAME = "쌤툴즈"; // 서비스 브랜드
-export const OPERATOR_NAME = "happydol"; // 운영자명 (저작권 표기 등)
-export const SITE_DESCRIPTION =
-  "현직 교사가 직접 만들고, 직접 교실에서 쓰는 웹 앱 모음입니다";
-export const CONTACT_EMAIL = "healthydol@gmail.com";
 
-// 홈 히어로 문구 (초안 — 추후 다듬을 예정)
-export const HERO_TAGLINE = "쌤툴즈 — 교사를 위한 도구 모음";
-export const HERO_TITLE = "교실을 편하게 만드는 도구들";
-export const HERO_SUBTITLE =
-  "현직 교사가 직접 만들고, 직접 교실에서 쓰는 웹 앱 모음입니다";
+// 아래 문구들은 content/site.json에서 관리 (Pages CMS 관리자 화면으로 편집 가능)
+export const SITE_NAME = copy.siteName;
+export const OPERATOR_NAME = copy.operatorName;
+export const SITE_DESCRIPTION = copy.siteDescription;
+export const CONTACT_EMAIL = copy.contactEmail;
+export const HERO_TAGLINE = copy.heroTagline;
+export const HERO_TITLE = copy.heroTitle;
+export const HERO_SUBTITLE = copy.heroSubtitle;
+export const ABOUT_DESCRIPTION = copy.aboutDescription;
+export const ABOUT_PARAGRAPHS: string[] = copy.aboutParagraphs;

@@ -50,6 +50,12 @@
   SVG는 임시). OG 이미지 자동 생성이 필요해지면 satori + @resvg/resvg-js 빌드 스크립트(무료)로
 - Lighthouse 성능·접근성 90+ 유지가 목표. 이를 해치는 변경은 사전에 알릴 것
 
+## 콘텐츠 관리
+- 사이트 문구(히어로·About·사이트명 등)는 `content/site.json`이 소스 — `src/lib/site.ts`가
+  re-export. 문구 수정은 JSON만 고치면 됨 (코드 수정 금지)
+- 웹 관리자: Pages CMS (pagescms.org, GitHub 로그인) — 설정은 `.pages.yml`.
+  저장 = 커밋 = 자동 배포. MDX 본문의 커스텀 컴포넌트(SectionTitle 등) 구조는 유지할 것
+
 ## 배포 / 분석
 - Cloudflare Workers 정적 자산: 설정은 `wrangler.jsonc` (name: happydol, 자산 디렉토리 `./out`,
   404는 `not_found_handling: "404-page"`). 서버 코드 없는 순수 정적 구성 — 정적 자산 서빙은 무료
