@@ -32,6 +32,26 @@
   --color-line: #ecdfcf;
 }
 
+/*
+  히어로 배경 이미지 위 텍스트 가독용 크림 스크림.
+  이미지에 박힌 큰 글귀(좌측)를 가리고 텍스트 영역을 확보한다.
+  - 모바일: 전체 얕은 크림 베일 (텍스트 폭이 넓어서)
+  - 데스크톱: 좌→우 그라데이션 (왼쪽 텍스트 가림, 오른쪽 왕자·별 노출)
+*/
+.hero-scrim {
+  background: rgba(250, 243, 234, 0.68);
+}
+@media (min-width: 768px) {
+  .hero-scrim {
+    background: linear-gradient(
+      to right,
+      rgba(250, 243, 234, 1) 0%,
+      rgba(250, 243, 234, 1) 47%,
+      rgba(250, 243, 234, 0) 74%
+    );
+  }
+}
+
 /* 키보드 포커스 링 — 모든 인터랙티브 요소 공통 */
 :where(a, button):focus-visible {
   @apply outline-cocoa outline-2 outline-offset-2;
