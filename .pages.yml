@@ -85,6 +85,12 @@ content:
       - name: heroSubtitle
         label: 홈 부가 문장
         type: string
+      - name: heroQuote
+        label: 홈 하단 글귀 (비우면 표시 안 함)
+        type: string
+      - name: heroQuoteSource
+        label: 홈 하단 글귀 출처
+        type: string
       - name: aboutDescription
         label: About 페이지 설명 (검색·공유 미리보기)
         type: string

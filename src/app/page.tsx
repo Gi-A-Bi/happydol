@@ -49,9 +49,12 @@ export default function HomePage() {
               소개 보기
             </Link>
           </div>
-          <p className="text-ink-soft mt-10 text-xs tracking-wide italic">
-            “{HERO_QUOTE}” — {HERO_QUOTE_SOURCE}
-          </p>
+          {HERO_QUOTE && (
+            <p className="text-ink-soft mt-10 text-xs tracking-wide italic">
+              “{HERO_QUOTE}”
+              {HERO_QUOTE_SOURCE ? ` — ${HERO_QUOTE_SOURCE}` : ""}
+            </p>
+          )}
         </div>
       </section>
 
