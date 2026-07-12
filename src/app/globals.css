@@ -30,15 +30,6 @@
 
   /* 경계선 */
   --color-line: #ecdfcf;
-
-  /* 히어로 글귀 — 황혼 하늘 위 텍스트 (시안 A-1) */
-  --color-twilight: #4a4668;
-  --color-twilight-soft: #6d6a8a;
-
-  /* 손글씨 글귀용 — 미보유 OS에서는 cursive 계열로 폴백 */
-  --font-script:
-    "Segoe Script", "Brush Script MT", "Savoye LET", "Apple Chancery",
-    cursive;
 }
 
 /*

@@ -12,6 +12,3 @@ export const HERO_TAGLINE = "쌤툴즈 — 교사를 위한 도구 모음";
 export const HERO_TITLE = "교실을 편하게 만드는 도구들";
 export const HERO_SUBTITLE =
   "현직 교사가 직접 만들고, 직접 교실에서 쓰는 웹 앱 모음입니다";
-// 히어로 손글씨 글귀 — 영어 원문 사용 (한국어 번역문은 번역 저작권 주의)
-export const HERO_QUOTE = "All grown-ups were\nonce children…";
-export const HERO_QUOTE_SOURCE = "— The Little Prince";
