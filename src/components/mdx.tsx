@@ -51,8 +51,24 @@ export function Feature({
   );
 }
 
+/** 반응형 16:9 영상 임베드 (Loom 등 iframe) */
+export function VideoEmbed({ src, title }: { src: string; title: string }) {
+  return (
+    <div className="mt-8 aspect-video w-full overflow-hidden rounded-2xl bg-white">
+      <iframe
+        src={src}
+        title={title}
+        loading="lazy"
+        allowFullScreen
+        className="h-full w-full"
+      />
+    </div>
+  );
+}
+
 export const mdxComponents = {
   SectionTitle,
   FeatureGrid,
   Feature,
+  VideoEmbed,
 };
