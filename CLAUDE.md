@@ -55,6 +55,8 @@
   re-export. 문구 수정은 JSON만 고치면 됨 (코드 수정 금지)
 - 웹 관리자: Pages CMS (pagescms.org, GitHub 로그인) — 설정은 `.pages.yml`.
   저장 = 커밋 = 자동 배포. MDX 본문의 커스텀 컴포넌트(SectionTitle 등) 구조는 유지할 것
+- 관리자 진입: 푸터 "관리자" 링크 → `/admin`(정적 페이지) → Pages CMS로 이동.
+  주소는 `src/lib/site.ts`의 `ADMIN_URL`. 사이트 자체에 로그인·서버 코드를 두지 않는다
 
 ## 배포 / 분석
 - Cloudflare Workers 정적 자산: 설정은 `wrangler.jsonc` (name: happydol, 자산 디렉토리 `./out`,

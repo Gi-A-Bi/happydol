@@ -9,6 +9,8 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
+      // 관리자 진입 페이지는 검색 결과에서 제외
+      disallow: "/admin",
     },
     sitemap: `${SITE_URL}/sitemap.xml`,
   };
