@@ -12,8 +12,14 @@ content:
     path: content/projects
     extension: mdx
     format: yaml-frontmatter
+    # 파일명(slug)이 URL(/projects/<slug>)과 썸네일 이름이 된다 — 영문 소문자·하이픈만 사용
     view:
+      primary: title
       fields: [title, status, date, featured]
+      sort: [date, title]
+      default:
+        sort: date
+        order: desc
     fields:
       - name: title
         label: 이름
@@ -41,6 +47,7 @@ content:
       - name: status
         label: 상태
         type: select
+        default: live
         options:
           values: [live, beta, archived]
         required: true
@@ -55,9 +62,43 @@ content:
       - name: featured
         label: 홈 Featured 노출
         type: boolean
+        default: false
+      # 본문은 기존 게시물과 같은 구조(문제 → 해결 → 기능 카드 → 마무리 문장)로 작성.
+      # 새 글은 아래 템플릿이 채워진 상태로 열리므로 문구만 바꾸면 된다.
       - name: body
-        label: 본문 (MDX — SectionTitle/FeatureGrid/Feature 구조를 유지하며 문구만 수정 권장)
-        type: text
+        label: 본문
+        description: "구조: <SectionTitle label=\"problem\">문제 요약</SectionTitle> → 설명 문단 → <SectionTitle label=\"solution\">해결 요약</SectionTitle> → 설명 문단 → <SectionTitle label=\"features\">기능 요약</SectionTitle> → <FeatureGrid> 안에 <Feature icon=\"이모지\" title=\"기능명\">한 줄 설명</Feature> 반복 → (선택) 마무리 문단. 태그 이름은 그대로 두고 문구만 수정하세요."
+        type: code
+        options:
+          format: mdx
+        default: |
+          <SectionTitle label="problem">아이들과 교실에서 겪는 불편을 한 문장으로</SectionTitle>
+
+          어떤 상황에서, 무엇이 번거롭거나 어려운지 2~3문장으로 적습니다.
+
+          <SectionTitle label="solution">이 앱이 그 문제를 어떻게 풀어주는지 한 문장으로</SectionTitle>
+
+          앱이 하는 일과 사용 흐름을 2~3문장으로 적습니다. 무료 여부, 로그인 필요 여부처럼
+          선생님이 궁금해할 정보가 있으면 함께 적습니다.
+
+          <SectionTitle label="features">주요 기능을 한 문장으로</SectionTitle>
+
+          <FeatureGrid>
+            <Feature icon="✨" title="기능 이름">
+              기능을 한 줄로 설명합니다.
+            </Feature>
+            <Feature icon="🎯" title="기능 이름">
+              기능을 한 줄로 설명합니다.
+            </Feature>
+            <Feature icon="📋" title="기능 이름">
+              기능을 한 줄로 설명합니다.
+            </Feature>
+            <Feature icon="🔄" title="기능 이름">
+              기능을 한 줄로 설명합니다.
+            </Feature>
+          </FeatureGrid>
+
+          마무리 문장(선택) — 데이터 보관 방식이나 화면 분위기 등 덧붙일 말이 있으면 적습니다.
 
   - name: site
     label: 사이트 문구
