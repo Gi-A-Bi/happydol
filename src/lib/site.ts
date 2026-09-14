@@ -19,5 +19,7 @@ export const HERO_QUOTE = copy.heroQuote;
 export const HERO_QUOTE_SOURCE = copy.heroQuoteSource;
 export const HERO_IMAGE = copy.heroImage;
 export const HERO_IMAGE_ALT = copy.heroImageAlt;
+// 프로젝트 상세의 개인정보 섹션 안내 문구 — 심의 대상 여부를 단정하지 않는다
+export const PRIVACY_NOTICE = copy.privacyNotice;
 export const ABOUT_DESCRIPTION = copy.aboutDescription;
 export const ABOUT_PARAGRAPHS: string[] = copy.aboutParagraphs;
