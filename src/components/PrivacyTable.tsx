@@ -3,6 +3,9 @@ import ScreeningGuide from "@/components/ScreeningGuide";
 import type { ProjectPrivacy } from "@/lib/projects";
 import { PRIVACY_NOTICE } from "@/lib/site";
 
+// collects가 이 값 하나뿐이면 "수집하지 않는 앱"으로 보고 다르게 표시한다
+const NONE = "없음";
+
 // 표에 쓰는 행 정의 — 교육부 「학습지원 소프트웨어 선정 기준」의 필수기준 항목 순서
 const ROWS = [
   { key: "storage", label: "저장 위치" },
@@ -19,6 +22,10 @@ export default function PrivacyTable({
   privacy?: ProjectPrivacy;
 }) {
   const rows = ROWS.filter(({ key }) => privacy?.[key]);
+  const collects = privacy?.collects;
+  // 학교가 가장 먼저 보는 질문은 "무엇을 수집하는가"이므로 표 위로 끌어올린다
+  const collectsNothing =
+    collects?.length === 1 && collects[0].trim() === NONE;
 
   return (
     <section className="mt-16 max-w-3xl sm:mt-24">
@@ -26,26 +33,34 @@ export default function PrivacyTable({
 
       <p className="text-ink-soft leading-relaxed">{PRIVACY_NOTICE}</p>
 
-      {privacy && (
-        <dl className="border-line divide-line mt-8 divide-y border-y">
-          {privacy?.collects && (
-            <div className="grid gap-2 py-4 sm:grid-cols-[9rem_1fr] sm:gap-4">
-              <dt className="text-ink text-sm font-semibold">수집 항목</dt>
-              <dd>
-                <ul className="flex flex-wrap gap-1.5">
-                  {privacy?.collects?.map((item) => (
-                    <li
-                      key={item}
-                      className="bg-cream-deep text-ink rounded-full px-2.5 py-0.5 text-xs"
-                    >
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </dd>
-            </div>
+      {collects && (
+        <div className="border-line bg-surface mt-8 rounded-2xl border px-5 py-5 sm:px-6">
+          {collectsNothing ? (
+            <p className="text-ink text-lg font-bold tracking-tight sm:text-xl">
+              이 앱은 학생 개인정보를 수집하지 않습니다
+            </p>
+          ) : (
+            <>
+              <p className="text-ink-soft text-xs font-semibold tracking-wide">
+                이 앱이 수집하는 개인정보
+              </p>
+              <ul className="mt-3 flex flex-wrap gap-1.5">
+                {collects.map((item) => (
+                  <li
+                    key={item}
+                    className="bg-rose-soft text-rose-deep rounded-full px-3 py-1 text-sm font-medium"
+                  >
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </>
           )}
+        </div>
+      )}
 
+      {privacy && rows.length > 0 && (
+        <dl className="border-line divide-line mt-6 divide-y border-y">
           {rows.map(({ key, label }) => (
             <div
               key={key}
