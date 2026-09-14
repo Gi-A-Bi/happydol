@@ -95,7 +95,7 @@ export default async function ProjectDetailPage({ params }: Props) {
         <MDXRemote source={project.content} components={mdxComponents} />
       </div>
 
-      {project.privacy && <PrivacyTable privacy={project.privacy} />}
+      <PrivacyTable privacy={project.privacy} />
     </article>
   );
 }

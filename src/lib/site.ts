@@ -21,5 +21,14 @@ export const HERO_IMAGE = copy.heroImage;
 export const HERO_IMAGE_ALT = copy.heroImageAlt;
 // 프로젝트 상세의 개인정보 섹션 안내 문구 — 심의 대상 여부를 단정하지 않는다
 export const PRIVACY_NOTICE = copy.privacyNotice;
+
+// 학운위 심의 대상 판단 순서도 — 교육부 가이드 문구 그대로. 임의 요약·단정 금지
+export interface Screening {
+  title: string;
+  steps: string[];
+  outcomes: string[];
+  source: string;
+}
+export const SCREENING: Screening = copy.screening;
 export const ABOUT_DESCRIPTION = copy.aboutDescription;
 export const ABOUT_PARAGRAPHS: string[] = copy.aboutParagraphs;

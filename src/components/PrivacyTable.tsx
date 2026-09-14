@@ -1,4 +1,5 @@
 import { SectionTitle } from "@/components/mdx";
+import ScreeningGuide from "@/components/ScreeningGuide";
 import type { ProjectPrivacy } from "@/lib/projects";
 import { PRIVACY_NOTICE } from "@/lib/site";
 
@@ -12,50 +13,54 @@ const ROWS = [
   { key: "under14", label: "만 14세 미만" },
 ] as const;
 
-export default function PrivacyTable({ privacy }: { privacy: ProjectPrivacy }) {
-  const rows = ROWS.filter(({ key }) => privacy[key]);
+export default function PrivacyTable({
+  privacy,
+}: {
+  privacy?: ProjectPrivacy;
+}) {
+  const rows = ROWS.filter(({ key }) => privacy?.[key]);
 
   return (
     <section className="mt-16 max-w-3xl sm:mt-24">
-      <SectionTitle label="privacy">
-        이 앱이 다루는 개인정보
-      </SectionTitle>
+      <SectionTitle label="privacy">이 앱이 다루는 개인정보</SectionTitle>
 
       <p className="text-ink-soft leading-relaxed">{PRIVACY_NOTICE}</p>
 
-      <dl className="border-line divide-line mt-8 divide-y border-y">
-        {privacy.collects && (
-          <div className="grid gap-2 py-4 sm:grid-cols-[9rem_1fr] sm:gap-4">
-            <dt className="text-ink text-sm font-semibold">수집 항목</dt>
-            <dd>
-              <ul className="flex flex-wrap gap-1.5">
-                {privacy.collects.map((item) => (
-                  <li
-                    key={item}
-                    className="bg-cream-deep text-ink rounded-full px-2.5 py-0.5 text-xs"
-                  >
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </dd>
-          </div>
-        )}
+      {privacy && (
+        <dl className="border-line divide-line mt-8 divide-y border-y">
+          {privacy?.collects && (
+            <div className="grid gap-2 py-4 sm:grid-cols-[9rem_1fr] sm:gap-4">
+              <dt className="text-ink text-sm font-semibold">수집 항목</dt>
+              <dd>
+                <ul className="flex flex-wrap gap-1.5">
+                  {privacy?.collects?.map((item) => (
+                    <li
+                      key={item}
+                      className="bg-cream-deep text-ink rounded-full px-2.5 py-0.5 text-xs"
+                    >
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </dd>
+            </div>
+          )}
 
-        {rows.map(({ key, label }) => (
-          <div
-            key={key}
-            className="grid gap-2 py-4 sm:grid-cols-[9rem_1fr] sm:gap-4"
-          >
-            <dt className="text-ink text-sm font-semibold">{label}</dt>
-            <dd className="text-ink-soft text-sm leading-relaxed">
-              {privacy[key]}
-            </dd>
-          </div>
-        ))}
-      </dl>
+          {rows.map(({ key, label }) => (
+            <div
+              key={key}
+              className="grid gap-2 py-4 sm:grid-cols-[9rem_1fr] sm:gap-4"
+            >
+              <dt className="text-ink text-sm font-semibold">{label}</dt>
+              <dd className="text-ink-soft text-sm leading-relaxed">
+                {privacy?.[key]}
+              </dd>
+            </div>
+          ))}
+        </dl>
+      )}
 
-      {privacy.policyUrl && (
+      {privacy?.policyUrl && (
         <a
           href={privacy.policyUrl}
           target="_blank"
@@ -65,6 +70,8 @@ export default function PrivacyTable({ privacy }: { privacy: ProjectPrivacy }) {
           개인정보 처리방침 전문
         </a>
       )}
+
+      <ScreeningGuide />
     </section>
   );
 }
