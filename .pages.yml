@@ -1,9 +1,11 @@
 # Pages CMS 설정 (pagescms.org) — GitHub 로그인 후 폼 기반 관리자 화면 제공
 # 저장 = 커밋 = Cloudflare 자동 배포 (몇 분 뒤 사이트 반영)
 
+# 업로드 폴더는 public/ 아래여야 한다 — 정적 내보내기(out/)에 포함되어야
+# 본문에 넣은 사진이 배포 사이트에서 열린다
 media:
-  input: assets/screenshots
-  output: /assets/screenshots
+  input: public/uploads
+  output: /uploads
 
 content:
   - name: projects
