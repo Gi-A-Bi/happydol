@@ -55,6 +55,13 @@
   re-export. 문구 수정은 JSON만 고치면 됨 (코드 수정 금지)
 - 웹 관리자: Pages CMS (pagescms.org, GitHub 로그인) — 설정은 `.pages.yml`.
   저장 = 커밋 = 자동 배포. MDX 본문의 커스텀 컴포넌트(SectionTitle 등) 구조는 유지할 것
+- 관리자 화면에서 올리는 이미지는 `public/uploads/`(웹 경로 `/uploads/...`)에만 둘 것.
+  `assets/`는 빌드 소스 폴더라 `out/`에 포함되지 않음 — 본문 사진 경로로 쓰면 배포 사이트에서 404
+- 프로젝트 썸네일은 frontmatter `thumbnail`에 업로드 원본(`/uploads/...`)을 지정하면
+  `scripts/make-thumbnails.mjs`가 웜톤 4:3 프레임본 `/thumbnails/<slug>.png`를 만들고,
+  `src/lib/projects.ts`가 화면용 경로를 그 프레임본으로 치환한다.
+  `/thumbnails/...`를 직접 지정하면 프레임 생성 없이 그대로 사용 (이니셜 placeholder용)
+- 홈 히어로 이미지·대체 텍스트는 `content/site.json`의 `heroImage`/`heroImageAlt`
 
 ## 배포 / 분석
 - Cloudflare Workers 정적 자산: 설정은 `wrangler.jsonc` (name: happydol, 자산 디렉토리 `./out`,
