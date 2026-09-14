@@ -14,5 +14,7 @@ export const HERO_TITLE = copy.heroTitle;
 export const HERO_SUBTITLE = copy.heroSubtitle;
 export const HERO_QUOTE = copy.heroQuote;
 export const HERO_QUOTE_SOURCE = copy.heroQuoteSource;
+export const HERO_IMAGE = copy.heroImage;
+export const HERO_IMAGE_ALT = copy.heroImageAlt;
 export const ABOUT_DESCRIPTION = copy.aboutDescription;
 export const ABOUT_PARAGRAPHS: string[] = copy.aboutParagraphs;

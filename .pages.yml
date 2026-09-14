@@ -93,6 +93,14 @@ content:
       - name: heroQuoteSource
         label: 홈 하단 글귀 출처
         type: string
+      - name: heroImage
+        label: 홈 히어로 이미지
+        type: image
+        description: "홈 상단 큰 배경 그림. 가로로 긴 이미지가 잘 맞는다 (글자는 왼쪽에 얹힘)"
+      - name: heroImageAlt
+        label: 홈 히어로 이미지 설명 (대체 텍스트)
+        type: string
+        description: "그림이 안 보이는 환경·스크린리더에서 읽히는 설명. 이미지를 바꾸면 같이 고칠 것"
       - name: aboutDescription
         label: About 페이지 설명 (검색·공유 미리보기)
         type: string
