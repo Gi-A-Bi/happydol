@@ -1,3 +1,4 @@
+import ScreeningFlow from "@/components/ScreeningFlow";
 import { SCREENING } from "@/lib/site";
 
 /**
@@ -13,7 +14,10 @@ export default function ScreeningGuide() {
       </summary>
 
       <div className="border-line border-t px-5 py-5">
-        <ol className="space-y-3">
+        {/* 구조를 먼저 보여주고, 아래에 교육부 원문을 그대로 싣는다 */}
+        <ScreeningFlow />
+
+        <ol className="mt-6 space-y-3">
           {SCREENING.steps.map((step) => (
             <li key={step} className="text-ink text-sm leading-relaxed">
               {step}
