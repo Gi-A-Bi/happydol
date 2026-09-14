@@ -6,6 +6,22 @@ const PROJECTS_DIR = path.join(process.cwd(), "content", "projects");
 
 export type ProjectStatus = "live" | "beta" | "archived";
 
+/**
+ * 개인정보 처리 안내 — 전부 선택 필드. frontmatter에 privacy가 없으면 상세 페이지에
+ * 해당 섹션이 렌더되지 않는다(새 프로젝트는 MDX 추가만으로 동작).
+ * 항목은 교육부 「학습지원 소프트웨어 선정 기준」의 필수기준에 대응한다.
+ */
+export interface ProjectPrivacy {
+  collects?: string[]; // 수집 항목 (최소처리 원칙)
+  storage?: string; // 저장 위치
+  storageNote?: string; // 저장·안전조치 부연
+  retention?: string; // 보관 기간·파기
+  rights?: string; // 열람·정정·삭제·처리정지 방법
+  thirdParty?: string; // 제3자 제공·위탁
+  under14?: string; // 만 14세 미만 아동 처리
+  policyUrl?: string; // 앱 자체 개인정보 처리방침 링크
+}
+
 export interface ProjectFrontmatter {
   title: string;
   description: string;
@@ -17,6 +33,7 @@ export interface ProjectFrontmatter {
   featured: boolean;
   repoUrl?: string;
   ctaText: string; // frontmatter 선택 필드 — 미지정 시 "사용해보기"
+  privacy?: ProjectPrivacy;
 }
 
 export interface Project extends ProjectFrontmatter {
@@ -25,6 +42,17 @@ export interface Project extends ProjectFrontmatter {
 
 export interface ProjectWithContent extends Project {
   content: string;
+}
+
+const UPLOAD_PREFIX = "/uploads/";
+
+/**
+ * 관리자 화면(Pages CMS)에서 고른 업로드 원본(`/uploads/...`)은 빌드 때 웜톤 4:3 프레임을
+ * 입혀 `/thumbnails/<slug>.png`로 생성되므로(scripts/make-thumbnails.mjs), 화면에는 그
+ * 프레임본을 쓴다. 그 밖의 경로는 지정한 값을 그대로 사용한다.
+ */
+function resolveThumbnail(slug: string, thumbnail: string): string {
+  return thumbnail.startsWith(UPLOAD_PREFIX) ? `/thumbnails/${slug}.png` : thumbnail;
 }
 
 const STATUSES: ProjectStatus[] = ["live", "beta", "archived"];
@@ -38,6 +66,36 @@ const REQUIRED_FIELDS = [
   "tags",
   "date",
 ] as const;
+
+const PRIVACY_TEXT_KEYS = [
+  "storage",
+  "storageNote",
+  "retention",
+  "rights",
+  "thirdParty",
+  "under14",
+  "policyUrl",
+] as const;
+
+/** frontmatter의 privacy 블록을 읽는다. 값이 하나도 없으면 undefined(섹션 숨김) */
+function parsePrivacy(raw: unknown): ProjectPrivacy | undefined {
+  if (typeof raw !== "object" || raw === null) return undefined;
+  const data = raw as Record<string, unknown>;
+  const privacy: ProjectPrivacy = {};
+
+  if (Array.isArray(data.collects)) {
+    const collects = data.collects.map(String).filter(Boolean);
+    if (collects.length > 0) privacy.collects = collects;
+  }
+  for (const key of PRIVACY_TEXT_KEYS) {
+    const value = data[key];
+    if (typeof value === "string" && value.trim() !== "") {
+      privacy[key] = value.trim();
+    }
+  }
+
+  return Object.keys(privacy).length > 0 ? privacy : undefined;
+}
 
 function parseProjectFile(filePath: string): ProjectWithContent {
   const slug = path.basename(filePath, ".mdx");
@@ -72,7 +130,7 @@ function parseProjectFile(filePath: string): ProjectWithContent {
     slug,
     title: String(data.title),
     description: String(data.description),
-    thumbnail: String(data.thumbnail),
+    thumbnail: resolveThumbnail(slug, String(data.thumbnail)),
     liveUrl: String(data.liveUrl),
     status: data.status,
     tags: data.tags.map(String),
@@ -80,6 +138,7 @@ function parseProjectFile(filePath: string): ProjectWithContent {
     featured: Boolean(data.featured),
     repoUrl: data.repoUrl ? String(data.repoUrl) : undefined,
     ctaText: data.ctaText ? String(data.ctaText) : "사용해보기",
+    privacy: parsePrivacy(data.privacy),
     content,
   };
 }

@@ -3,6 +3,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { mdxComponents } from "@/components/mdx";
+import PrivacyTable from "@/components/PrivacyTable";
 import StatusBadge from "@/components/StatusBadge";
 import { getAllProjects, getProjectBySlug } from "@/lib/projects";
 
@@ -93,6 +94,8 @@ export default async function ProjectDetailPage({ params }: Props) {
       <div className="mdx-body mt-12 max-w-3xl">
         <MDXRemote source={project.content} components={mdxComponents} />
       </div>
+
+      <PrivacyTable privacy={project.privacy} />
     </article>
   );
 }

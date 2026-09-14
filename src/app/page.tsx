@@ -3,6 +3,8 @@ import Link from "next/link";
 import ProjectCard from "@/components/ProjectCard";
 import { getFeaturedProjects } from "@/lib/projects";
 import {
+  HERO_IMAGE,
+  HERO_IMAGE_ALT,
   HERO_QUOTE,
   HERO_QUOTE_SOURCE,
   HERO_SUBTITLE,
@@ -17,8 +19,8 @@ export default function HomePage() {
     <div>
       <section className="relative overflow-hidden rounded-[2.5rem]">
         <Image
-          src="/hero-prince.jpg"
-          alt="어린왕자와 여우가 작은 행성 위에서 별밤 하늘을 바라보는 파스텔 수채화"
+          src={HERO_IMAGE}
+          alt={HERO_IMAGE_ALT}
           fill
           priority
           sizes="(max-width: 1024px) 100vw, 1024px"
