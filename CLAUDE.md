@@ -62,6 +62,11 @@
   `src/lib/projects.ts`가 화면용 경로를 그 프레임본으로 치환한다.
   `/thumbnails/...`를 직접 지정하면 프레임 생성 없이 그대로 사용 (이니셜 placeholder용)
 - 홈 히어로 이미지·대체 텍스트는 `content/site.json`의 `heroImage`/`heroImageAlt`
+- 프로젝트 개인정보 안내는 frontmatter의 선택 필드 `privacy`(collects/storage/storageNote/
+  retention/rights/thirdParty/under14/policyUrl). 없으면 상세 페이지에서 섹션이 숨겨짐.
+  항목은 교육부 「학습지원 소프트웨어 선정 기준」 필수기준에 대응 — 항목을 바꿀 때는 승인받을 것
+- 개인정보 섹션 안내 문구는 `content/site.json`의 `privacyNotice`.
+  학운위 심의 대상 여부를 단정하지 않는다는 방침이므로 문구를 단정형으로 바꾸지 말 것
 
 ## 배포 / 분석
 - Cloudflare Workers 정적 자산: 설정은 `wrangler.jsonc` (name: happydol, 자산 디렉토리 `./out`,
