@@ -135,6 +135,25 @@ content:
         label: 개인정보 섹션 안내 문구
         type: text
         description: "프로젝트 상세의 개인정보 표 위에 공통으로 뜨는 문구. 학운위 심의 대상 여부를 단정하지 않도록 유지할 것"
+      - name: screening
+        label: 학운위 심의 판단 순서도 (교육부 공식 문구)
+        type: object
+        description: "모든 프로젝트 상세에 동일하게 표시. 교육부 가이드 문구 그대로 유지하고 임의로 요약·단정하지 말 것"
+        fields:
+          - name: title
+            label: 제목
+            type: string
+          - name: steps
+            label: 판단 질문 (Q1~Q3)
+            type: string
+            list: true
+          - name: outcomes
+            label: 판단 결과
+            type: string
+            list: true
+          - name: source
+            label: 출처 표기
+            type: string
       - name: aboutDescription
         label: About 페이지 설명 (검색·공유 미리보기)
         type: string
