@@ -26,9 +26,9 @@ content:
         type: string
         required: true
       - name: thumbnail
-        label: 썸네일 경로
-        type: string
-        description: "/thumbnails/<파일이름>.png — assets/screenshots에 <파일이름>.png 스크린샷을 올리면 빌드가 프레임 썸네일을 자동 생성"
+        label: 썸네일
+        type: image
+        description: "앱 스크린샷을 올리면 빌드가 웜톤 4:3 프레임을 자동으로 입혀 카드에 보여준다 (원본 비율·크기는 상관없음)"
         required: true
       - name: liveUrl
         label: 서비스 링크

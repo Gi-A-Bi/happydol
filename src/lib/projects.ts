@@ -27,6 +27,17 @@ export interface ProjectWithContent extends Project {
   content: string;
 }
 
+const UPLOAD_PREFIX = "/uploads/";
+
+/**
+ * 관리자 화면(Pages CMS)에서 고른 업로드 원본(`/uploads/...`)은 빌드 때 웜톤 4:3 프레임을
+ * 입혀 `/thumbnails/<slug>.png`로 생성되므로(scripts/make-thumbnails.mjs), 화면에는 그
+ * 프레임본을 쓴다. 그 밖의 경로는 지정한 값을 그대로 사용한다.
+ */
+function resolveThumbnail(slug: string, thumbnail: string): string {
+  return thumbnail.startsWith(UPLOAD_PREFIX) ? `/thumbnails/${slug}.png` : thumbnail;
+}
+
 const STATUSES: ProjectStatus[] = ["live", "beta", "archived"];
 
 const REQUIRED_FIELDS = [
@@ -72,7 +83,7 @@ function parseProjectFile(filePath: string): ProjectWithContent {
     slug,
     title: String(data.title),
     description: String(data.description),
-    thumbnail: String(data.thumbnail),
+    thumbnail: resolveThumbnail(slug, String(data.thumbnail)),
     liveUrl: String(data.liveUrl),
     status: data.status,
     tags: data.tags.map(String),
