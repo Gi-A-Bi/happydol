@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import ProjectCard from "@/components/ProjectCard";
-import { getFeaturedProjects } from "@/lib/projects";
+import { getAllProjects } from "@/lib/projects";
 import {
   HERO_IMAGE,
   HERO_IMAGE_ALT,
@@ -13,7 +13,12 @@ import {
 } from "@/lib/site";
 
 export default function HomePage() {
-  const featured = getFeaturedProjects().slice(0, 3);
+  // 홈에서 전체를 훑을 수 있게 모두 싣는다. featured 는 순서만 앞으로 당긴다.
+  const projects = getAllProjects();
+  const ordered = [
+    ...projects.filter((project) => project.featured),
+    ...projects.filter((project) => !project.featured),
+  ];
 
   return (
     <div>
@@ -63,17 +68,12 @@ export default function HomePage() {
       <section className="mt-14 sm:mt-16">
         <div className="flex items-baseline justify-between">
           <h2 className="text-ink-soft text-xs font-semibold tracking-[0.2em] uppercase">
-            Featured
+            Projects
           </h2>
-          <Link
-            href="/projects"
-            className="hover:text-cocoa text-sm underline underline-offset-4 transition-colors"
-          >
-            모든 프로젝트 보기 →
-          </Link>
+          <p className="text-ink-soft text-sm">{ordered.length}개</p>
         </div>
         <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {featured.map((project) => (
+          {ordered.map((project) => (
             <ProjectCard key={project.slug} project={project} />
           ))}
         </div>
