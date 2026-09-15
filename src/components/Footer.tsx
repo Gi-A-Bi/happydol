@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ADMIN_URL, OPERATOR_NAME, SITE_NAME } from "@/lib/site";
 
 export default function Footer() {
@@ -13,6 +14,13 @@ export default function Footer() {
           <p className="text-ink-soft text-xs tracking-wide">
             © 2026 {OPERATOR_NAME}
           </p>
+          {/* 개인정보 보호법 제30조 — 방침은 누구나 쉽게 찾을 수 있어야 한다 */}
+          <Link
+            href="/privacy"
+            className="text-ink-soft hover:text-ink text-xs tracking-wide transition-colors"
+          >
+            개인정보처리방침
+          </Link>
           {/* 관리자 편집 화면 바로가기 — 열려 있어도 GitHub 권한이 있어야 편집 가능 */}
           <a
             href={ADMIN_URL}
