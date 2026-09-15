@@ -4,12 +4,12 @@ import { CONTACT_EMAIL, SITE_NAME } from "@/lib/site";
 /**
  * 쌤툴즈 개인정보처리방침 — 「개인정보 보호법」 제30조
  *
- * ⚠️ 조문 번호(제1조–제9조)는 에듀집 필수기준 체크리스트가 "제6조" 형식으로 인용하므로
+ * ⚠️ 조문 번호(제1조–제12조)는 에듀집 필수기준 체크리스트가 "제6조" 형식으로 인용하므로
  *    고정입니다. 조문을 추가·삭제하거나 순서를 바꾸지 않습니다.
  * ⚠️ 이 사이트는 개인정보를 수집하지 않습니다. 사실이 바뀌면(문의 폼, 분석 도구, 외부 글꼴 등)
  *    방침을 먼저 고치고 시행 7일 전부터 알린 뒤에 그 기능을 켭니다.
  *    특히 src/app/layout.tsx 의 Cloudflare Web Analytics 비콘 주석을 해제하면
- *    제2조·제5조를 함께 고쳐야 합니다.
+ *    제2조·제6조를 함께 고쳐야 합니다.
  */
 
 const TITLE = "개인정보처리방침";
@@ -87,6 +87,16 @@ const ARTICLES: { no: number; title: string; body: React.ReactNode }[] = [
   },
   {
     no: 5,
+    title: "개인정보의 파기",
+    body: (
+      <p>
+        운영자가 보유하는 개인정보가 없어 파기할 대상이 없습니다. 브라우저에 저장하는
+        값도 없으므로 방문자가 따로 지울 것도 없습니다.
+      </p>
+    ),
+  },
+  {
+    no: 6,
     title: "개인정보의 안전성 확보 조치",
     body: (
       <ul className="list-disc space-y-1.5 pl-5">
@@ -100,7 +110,7 @@ const ARTICLES: { no: number; title: string; body: React.ReactNode }[] = [
     ),
   },
   {
-    no: 6,
+    no: 7,
     title: "정보주체의 권리·의무 및 행사 방법",
     body: (
       <>
@@ -110,7 +120,7 @@ const ARTICLES: { no: number; title: string; body: React.ReactNode }[] = [
           정보가 존재하지 않습니다.
         </p>
         <p className="mt-3">
-          확인이 필요하시면 제7조의 개인정보 보호책임자에게 요청해 주세요. 지체 없이
+          확인이 필요하시면 제8조의 개인정보 보호책임자에게 요청해 주세요. 지체 없이
           답변드립니다.
         </p>
         <p className="mt-3">
@@ -123,7 +133,7 @@ const ARTICLES: { no: number; title: string; body: React.ReactNode }[] = [
     ),
   },
   {
-    no: 7,
+    no: 8,
     title: "개인정보 보호책임자",
     body: (
       <>
@@ -151,20 +161,25 @@ const ARTICLES: { no: number; title: string; body: React.ReactNode }[] = [
     ),
   },
   {
-    no: 8,
-    title: "개인정보의 제3자 제공과 처리의 위탁",
+    no: 9,
+    title: "개인정보의 제3자 제공",
+    body: (
+      <p>
+        수집하는 개인정보가 없으므로 제3자에게 제공하는 개인정보도 없습니다.
+      </p>
+    ),
+  },
+  {
+    no: 10,
+    title: "개인정보 처리의 위탁",
     body: (
       <>
         <p>
-          수집하는 개인정보가 없으므로 제3자에게 제공하는 개인정보도 없습니다.
-          개인정보 처리를 위탁하지도 않습니다.
-        </p>
-        <p className="mt-3">
-          다만 웹사이트를 보여 주는 과정에서 아래 사업자에게 접속 정보가 전달될 수
-          있습니다.
+          개인정보 처리를 위탁하지 않습니다. 다만 웹사이트를 보여 주는 과정에서 아래
+          사업자의 시스템에 접속 기록이 남을 수 있습니다.
         </p>
         <div className="border-line mt-3 overflow-x-auto rounded-2xl border">
-          <table className="w-full min-w-xl border-collapse text-left text-sm">
+          <table className="w-full min-w-md border-collapse text-left text-sm">
             <thead>
               <tr>
                 <th className="border-line bg-cream-deep border-b px-4 py-3 font-semibold">
@@ -172,9 +187,6 @@ const ARTICLES: { no: number; title: string; body: React.ReactNode }[] = [
                 </th>
                 <th className="border-line bg-cream-deep border-b px-4 py-3 font-semibold">
                   내용
-                </th>
-                <th className="border-line bg-cream-deep border-b px-4 py-3 font-semibold">
-                  국가
                 </th>
               </tr>
             </thead>
@@ -187,20 +199,37 @@ const ARTICLES: { no: number; title: string; body: React.ReactNode }[] = [
                   웹사이트 호스팅 — 접속 시 IP 주소와 브라우저 정보가 처리될 수
                   있습니다. 이 사이트는 그 기록을 따로 내려받아 보관하지 않습니다.
                 </td>
-                <td className="border-line border-b px-4 py-3 align-top">미국</td>
               </tr>
             </tbody>
           </table>
         </div>
+      </>
+    ),
+  },
+  {
+    no: 11,
+    title: "개인정보의 국외 이전",
+    body: (
+      <>
+        <p>
+          이 사이트는 개인정보를 수집하지 않으므로 국외로 이전되는 개인정보도 없습니다.
+          다만 화면을 보여 주는 과정에서 접속 정보가 국외로 전달될 수 있습니다.
+        </p>
+        <ul className="mt-3 list-disc space-y-1.5 pl-5">
+          <li>이전받는 자: Cloudflare, Inc.</li>
+          <li>이전 국가: 미국</li>
+          <li>이전 항목: 접속 시 IP 주소, 브라우저 정보</li>
+          <li>이전 일시·방법: 접속할 때마다 정보통신망을 통해 전송</li>
+          <li>이용 목적 및 보유 기간: 웹사이트 호스팅 — 위탁 업무 수행 기간</li>
+        </ul>
         <p className="text-ink-soft mt-3 text-sm">
-          이전 시기와 방법: 서비스에 접속할 때마다 정보통신망을 통해 전송됩니다. 국외
-          이전을 원하지 않으시면 이 사이트를 이용하지 않으실 수 있습니다.
+          국외 이전을 원하지 않으시면 이 사이트를 이용하지 않으실 수 있습니다.
         </p>
       </>
     ),
   },
   {
-    no: 9,
+    no: 12,
     title: "개인정보처리방침의 변경",
     body: (
       <p>
