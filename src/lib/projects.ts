@@ -10,6 +10,7 @@ export type ProjectStatus = "live" | "beta" | "archived";
 export const CATEGORIES = [
   { key: "학급운영", label: "학급 운영" },
   { key: "창체", label: "창체 활용" },
+  { key: "교과", label: "교과 활용" },
 ] as const;
 export type ProjectCategory = (typeof CATEGORIES)[number]["key"];
 

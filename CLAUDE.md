@@ -23,7 +23,7 @@
 - 프로젝트 데이터는 `content/projects/*.mdx`가 유일한 소스.
   새 프로젝트 추가 = MDX 파일 1개 추가로 끝나야 하며, 코드 수정이 필요하면 잘못된 설계
 - frontmatter 스키마(title, description, thumbnail, liveUrl, repoUrl(선택),
-  ctaText(선택, 기본 "사용해보기"), category(선택, 학급운영 | 창체), status, tags, date,
+  ctaText(선택, 기본 "사용해보기"), category(선택, 학급운영 | 창체 | 교과), status, tags, date,
   featured)를 변경할 때는
   반드시 먼저 설명하고 승인받을 것
 - 컴포넌트는 `src/components/`, 페이지는 App Router 규칙대로. 과도한 추상화 금지
