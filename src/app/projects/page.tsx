@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import ProjectCard from "@/components/ProjectCard";
+import ProjectGroups from "@/components/ProjectGroups";
 import { getAllProjects } from "@/lib/projects";
 
 const TITLE = "Projects";
@@ -23,10 +23,8 @@ export default function ProjectsPage() {
         Projects
       </h1>
       <p className="text-ink-soft mt-3 text-sm">{DESCRIPTION}</p>
-      <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {projects.map((project) => (
-          <ProjectCard key={project.slug} project={project} />
-        ))}
+      <div className="mt-10">
+        <ProjectGroups projects={projects} />
       </div>
     </div>
   );

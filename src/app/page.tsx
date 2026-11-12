@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import ProjectCard from "@/components/ProjectCard";
+import ProjectGroups from "@/components/ProjectGroups";
 import { getAllProjects } from "@/lib/projects";
 import {
   HERO_IMAGE,
@@ -13,7 +13,7 @@ import {
 } from "@/lib/site";
 
 export default function HomePage() {
-  // 홈에서 전체를 훑을 수 있게 모두 싣는다. featured 는 순서만 앞으로 당긴다.
+  // 홈에서 전체를 훑을 수 있게 모두 싣는다. featured 는 각 유형 묶음 안에서 순서만 앞으로 당긴다.
   const projects = getAllProjects();
   const ordered = [
     ...projects.filter((project) => project.featured),
@@ -72,10 +72,8 @@ export default function HomePage() {
           </h2>
           <p className="text-ink-soft text-sm">{ordered.length}개</p>
         </div>
-        <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {ordered.map((project) => (
-            <ProjectCard key={project.slug} project={project} />
-          ))}
+        <div className="mt-6">
+          <ProjectGroups projects={ordered} />
         </div>
       </section>
     </div>
