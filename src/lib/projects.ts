@@ -6,6 +6,13 @@ const PROJECTS_DIR = path.join(process.cwd(), "content", "projects");
 
 export type ProjectStatus = "live" | "beta" | "archived";
 
+/** 프로젝트 유형 — 홈·목록에서 이 순서로 묶어 보여준다. 값은 frontmatter `category` */
+export const CATEGORIES = [
+  { key: "학급운영", label: "학급 운영" },
+  { key: "창체", label: "창체 활용" },
+] as const;
+export type ProjectCategory = (typeof CATEGORIES)[number]["key"];
+
 /**
  * 개인정보 처리 안내 — 전부 선택 필드. frontmatter에 privacy가 없으면 상세 페이지에
  * 해당 섹션이 렌더되지 않는다(새 프로젝트는 MDX 추가만으로 동작).
@@ -33,6 +40,7 @@ export interface ProjectFrontmatter {
   featured: boolean;
   repoUrl?: string;
   ctaText: string; // frontmatter 선택 필드 — 미지정 시 "사용해보기"
+  category?: ProjectCategory; // 선택 — 없으면 "기타" 묶음으로 표시
   privacy?: ProjectPrivacy;
 }
 
@@ -56,6 +64,17 @@ function resolveThumbnail(slug: string, thumbnail: string): string {
 }
 
 const STATUSES: ProjectStatus[] = ["live", "beta", "archived"];
+const CATEGORY_KEYS = CATEGORIES.map((c) => c.key);
+
+function parseCategory(raw: unknown, slug: string): ProjectCategory | undefined {
+  if (raw === undefined || raw === null || raw === "") return undefined;
+  if (!CATEGORY_KEYS.includes(raw as ProjectCategory)) {
+    throw new Error(
+      `[content/projects/${slug}.mdx] category는 ${CATEGORY_KEYS.join(" | ")} 중 하나여야 합니다. (현재: "${String(raw)}")`
+    );
+  }
+  return raw as ProjectCategory;
+}
 
 const REQUIRED_FIELDS = [
   "title",
@@ -138,6 +157,7 @@ function parseProjectFile(filePath: string): ProjectWithContent {
     featured: Boolean(data.featured),
     repoUrl: data.repoUrl ? String(data.repoUrl) : undefined,
     ctaText: data.ctaText ? String(data.ctaText) : "사용해보기",
+    category: parseCategory(data.category, slug),
     privacy: parsePrivacy(data.privacy),
     content,
   };
@@ -166,4 +186,25 @@ export function getProjectBySlug(slug: string): ProjectWithContent | null {
 
 export function getFeaturedProjects(): Project[] {
   return getAllProjects().filter((project) => project.featured);
+}
+
+export interface ProjectGroup {
+  key: string;
+  label: string;
+  projects: Project[];
+}
+
+/** CATEGORIES 순서로 묶고, 유형이 없는 프로젝트는 맨 뒤 "기타"에 둔다. 빈 묶음은 뺀다 */
+export function groupByCategory(projects: Project[]): ProjectGroup[] {
+  const groups: ProjectGroup[] = CATEGORIES.map(({ key, label }) => ({
+    key,
+    label,
+    projects: projects.filter((project) => project.category === key),
+  }));
+  groups.push({
+    key: "etc",
+    label: "기타",
+    projects: projects.filter((project) => !project.category),
+  });
+  return groups.filter((group) => group.projects.length > 0);
 }

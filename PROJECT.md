@@ -15,7 +15,7 @@
 ## 3. 기술 요구사항
 - 스택: Next.js (App Router) + Tailwind CSS + MDX
 - 프로젝트 데이터: `content/projects/*.mdx` 파일 기반
-  - frontmatter: `title`, `description`, `thumbnail`, `liveUrl`, `repoUrl`(선택), `ctaText`(선택, 기본 "사용해보기"), `status`(live | beta | archived), `tags`, `date`, `featured`(boolean)
+  - frontmatter: `title`, `description`, `thumbnail`, `liveUrl`, `repoUrl`(선택), `ctaText`(선택, 기본 "사용해보기"), `category`(선택, 학급운영 | 창체 — 홈·목록에서 유형별로 묶음), `status`(live | beta | archived), `tags`, `date`, `featured`(boolean)
   - 파일 추가만으로 목록/상세 페이지 자동 생성
 - 배포: Cloudflare Workers 정적 자산 — 정적 내보내기(`output: 'export'`), 설정은 `wrangler.jsonc`(자산 디렉토리 `./out`), 빌드 커맨드 `npm run build`
   - 주소: 일단 `*.workers.dev` 서브도메인, 커스텀 도메인은 수익화 후 검토
